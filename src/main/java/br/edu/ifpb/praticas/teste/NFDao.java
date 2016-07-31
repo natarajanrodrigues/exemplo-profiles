@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
@@ -49,8 +50,19 @@ public class NFDao {
         statement.execute();
     }
 
-    public List<NotaFiscal> listar() {
-        return null;
+    public List<NotaFiscal> listar() throws SQLException {
+        PreparedStatement statement = null;
+        statement = connection.prepareStatement("SELECT * FROM notafiscal");
+        ResultSet resultSet = statement.executeQuery();
+        List<NotaFiscal> notas = new LinkedList<NotaFiscal>();
+        while(resultSet.next()) {
+            NotaFiscal notaFiscal = new NotaFiscal();
+            notaFiscal.setCliente(resultSet.getString(1));
+            notaFiscal.setValor(resultSet.getDouble(2));
+            notaFiscal.setData(resultSet.getDate(3));
+            notas.add(notaFiscal);
+        }
+        return notas;
     }
 
     public NotaFiscal consultar(String cliente) throws SQLException {

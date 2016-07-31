@@ -101,20 +101,5 @@
       </plugins>
   </build>
 
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <exemplo.profiles.version>${project.version}-DEVELOPMENT_VERSION</exemplo.profiles.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
-                <exemplo.profiles.version>${project.version}-${maven.build.timestamp}-NIGHTLY</exemplo.profiles.version>
-            </properties>
-        </profile>
-    </profiles>
 
 </project>

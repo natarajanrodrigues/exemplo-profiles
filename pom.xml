@@ -46,6 +46,12 @@
       <version>1.5.6</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.9.5</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -76,7 +82,22 @@
                   <port>8180</port>
               </configuration>
           </plugin>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-failsafe-plugin</artifactId>
+              <version>2.19.1</version>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>integration-test</goal>
+                          <goal>verify</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
       </plugins>
   </build>
+
+    
 
 </project>

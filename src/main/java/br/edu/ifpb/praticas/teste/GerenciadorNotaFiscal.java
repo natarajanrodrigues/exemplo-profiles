@@ -23,6 +23,9 @@ public class GerenciadorNotaFiscal {
     public NotaFiscal gera(Pedido pedido) throws NotaFiscalException {
         NotaFiscal nf = new NotaFiscal(pedido.getCliente(), pedido.getValorTotal() * 0.94, new Date());
         try {
+            List<NotaFiscal> notasExistentes = dao.listar();
+            if(notasExistentes.contains(nf))
+                throw new NotaFiscalException("Não foi possível registrar a nota fiscal.");
             dao.persiste(nf);
         } catch(Exception e) {
             throw new NotaFiscalException("Não foi possível registrar a nota fiscal. " + e.getMessage());

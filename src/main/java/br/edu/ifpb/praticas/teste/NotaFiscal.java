@@ -44,4 +44,13 @@ public class NotaFiscal {
     public void setData(Date data) {
         this.data = data;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NotaFiscal that = (NotaFiscal) o;
+        return getCliente() != null ? getCliente().equals(that.getCliente()) : that.getCliente() == null;
+    }
+
 }

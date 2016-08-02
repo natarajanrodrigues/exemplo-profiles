@@ -1,6 +1,6 @@
 # Exemplo de CI com Profiles do Maven
 
-[![Build Status](https://travis-ci.org/ads-ifpb-praticas-20161/exemplo-profiles.svg?branch=envHOMOLOG)](https://travis-ci.org/ads-ifpb-praticas-20161/exemplo-profiles)
+[![Build Status](https://travis-ci.org/ads-ifpb-praticas-20161/siscultural.svg?branch=bHEROKU)](https://travis-ci.org/ads-ifpb-praticas-20161/siscultural)
 
 Este repositório é um exemplo de como integrar um projeto com **Travis CI** e **Heroku**.
 

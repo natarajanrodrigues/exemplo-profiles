@@ -5,7 +5,8 @@ jdk:
 install: mvn install -U -DskipTests=true
 script:
   mvn integration-test verify -Ptest
-
+env:
+  environment=test
 deploy:
   provider: heroku
   api_key:

@@ -74,14 +74,8 @@
           </testResource>
       </testResources>
       <plugins>
-          <plugin>
-              <groupId>org.apache.tomcat.maven</groupId>
-              <artifactId>tomcat7-maven-plugin</artifactId>
-              <version>2.2</version>
-              <configuration>
-                  <port>8180</port>
-              </configuration>
-          </plugin>
+
+          <!-- Plugin para executar os testes de integração -->
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-failsafe-plugin</artifactId>
@@ -98,26 +92,35 @@
                   <skipTests>true</skipTests>
               </configuration>
           </plugin>
-          <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>cobertura-maven-plugin</artifactId>
-              <configuration>
-                  <formats>
-                      <format>html</format>
-                      <format>xml</format>
-                  </formats>
-              </configuration>
-          </plugin>
       </plugins>
   </build>
 
     <profiles>
+
+
         <profile>
             <id>dev</id>
             <properties>
-                <exemplo.profiles.version>${project.version}-DEVELOPMENT_VERSION</exemplo.profiles.version>
+                <exemplo.profiles.version>
+                    ${project.version}-DEVELOPMENT_VERSION
+                </exemplo.profiles.version>
             </properties>
+            <build>
+                <finalName>${project.artifactId}-${exemplo.profiles.version}</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <version>2.2</version>
+                        <configuration>
+                            <port>8180</port>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
+
+
         <profile>
             <id>test</id>
             <properties>
@@ -126,6 +129,34 @@
             </properties>
             <build>
                 <finalName>${project.artifactId}-${project.version}-${maven.build.timestamp}-NIGHTLY</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>cobertura-maven-plugin</artifactId>
+                        <configuration>
+                            <formats>
+                                <format>html</format>
+                                <format>xml</format>
+                            </formats>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.19.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <skipTests>false</skipTests>
+                        </configuration>
+                    </plugin>
+                </plugins>
             </build>
         </profile>
     </profiles>

@@ -1,7 +1,11 @@
 language: java
 jdk:
   - oraclejdk8
-  
+
+branches:
+  only:
+    envHOMOLOG
+
 install: mvn install -U -DskipTests=true
 script:
   mvn integration-test verify -Ptest

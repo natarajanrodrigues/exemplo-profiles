@@ -9,7 +9,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: "788442021d5a77c91b8cca89db466f9e491d1d9b"
-  on: master
+    secure: "788442021d5a77c91b8cca89db466f9e491d1d9b" # API Key, encontrado em Account Settings
+  on: master # Configuração de branch
   app:
-    test: secure-escarpment-22257
+    test: secure-escarpment-22257 # Nome da app no Heroku

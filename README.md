@@ -71,10 +71,10 @@ Isso fará com que o profile seja ativado ao ser construído dentro do Heroku.
 ```yaml
 language: java
 jdk:
-  + oraclejdk8
+  - oraclejdk8
 branches:
   only:
-    <BRANCH_TESTE>
+    BRANCH_TESTE
 install: mvn install -U -DskipTests=true
 script:
   mvn integration-test verify -Ptest

@@ -5,3 +5,11 @@ jdk:
 install: mvn install -U -DskipTests=true
 script:
   mvn integration-test verify -Ptest
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "788442021d5a77c91b8cca89db466f9e491d1d9b"
+  on: master
+  app:
+    test: secure-escarpment-22257
